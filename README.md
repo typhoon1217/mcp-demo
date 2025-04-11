@@ -1,7 +1,7 @@
 # MCP 데모 프로젝트
 
 ## 개요
-MCP(Multi-Context Processing) 데모는 Gemini API를 활용하여 컨텍스트 기반 쿼리 처리를 구현한 Spring Boot 애플리케이션입니다. 이 프로젝트는 데이터베이스에 저장된 프로젝트 정보를 컨텍스트로 활용하여 사용자 쿼리에 대한 응답을 생성합니다.
+MCP(Multi-Context Protocol) 데모는 Gemini API를 활용하여 컨텍스트 기반 쿼리 처리를 구현한 Spring Boot 애플리케이션입니다. 이 프로젝트는 데이터베이스에 저장된 프로젝트 정보를 컨텍스트로 활용하여 사용자 쿼리에 대한 응답을 생성합니다.
 
 ## 기술 스택
 - Java
