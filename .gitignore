@@ -1,0 +1,81 @@
+# Gradle
+.gradle
+/build
+!**/src/main/**
+!**/src/test/**
+
+# Spring Boot
+*.jar
+*.war
+**/.idea
+**/.classpath
+**/.project
+**/.settings
+**/.factorypath
+**/.springBeans
+**/target/
+**/bin/
+
+# Svelte/Vite
+/node_modules
+/dist
+/.svelte-kit
+/.vite
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.development.local
+.env.production
+.env.production.local
+
+# Logs and temporary files
+*.log
+*.tmp
+temp/
+tmp/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Other
+.idea
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+db/docker-compose.yml
+gradle/wrapper
+src/main/resources/application.properties
+gradlew.bat
+gradlew
+HELP.md
