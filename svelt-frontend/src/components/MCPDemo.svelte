@@ -28,21 +28,19 @@
   </div>
   <div class="card-body">
     <p class="mb-4">
-      MCP는 AI 시스템이 맥락 데이터를 인식하여 응답을 제공하는 방법을
-      보여줍니다. 이 데모에서는 Gemini API가 쿼리에 답변할 때 프로젝트에 관한
-      정보를 맥락으로 활용합니다.
+      MCP demonstrates how AI systems can provide responses with awareness of
+      contextual data. In this demo, the Gemini API will access information
+      about your projects as context when answering queries.
     </p>
 
     <form on:submit|preventDefault={handleSubmit}>
       <div class="mb-3">
-        <label for="query" class="form-label"
-          >프로젝트에 대해서 물어보세요!</label
-        >
+        <label for="query" class="form-label">Ask about your projects</label>
         <textarea
           class="form-control"
           id="query"
           rows="3"
-          placeholder="예시: 내 프로젝트는 무엇이 있나요? 프로젝트 상태는 어떤가요? 모든 프로젝트에 대한 요약을 보여주세요."
+          placeholder="Example: What projects do I have? What's the status of my projects? Give me a summary of all projects."
           bind:value={query}
         ></textarea>
       </div>
@@ -67,7 +65,7 @@
 
         <div class="card mb-3">
           <div class="card-header bg-info text-white">
-            <strong>질문</strong>
+            <strong>Query</strong>
           </div>
           <div class="card-body">
             <p>{mcpResponse.query}</p>
@@ -76,7 +74,7 @@
 
         <div class="card mb-3">
           <div class="card-header bg-success text-white">
-            <strong>응답</strong>
+            <strong>Response</strong>
           </div>
           <div class="card-body">
             <p style="white-space: pre-line">{mcpResponse.response}</p>
@@ -85,7 +83,7 @@
 
         <div class="card mb-3">
           <div class="card-header bg-primary text-white">
-            <strong>컨텍스트</strong>
+            <strong>Context Used</strong>
           </div>
           <div class="card-body">
             <ul class="list-group">
@@ -98,10 +96,10 @@
 
         <div class="card">
           <div class="card-header bg-secondary text-white">
-            <strong>Model 정보</strong>
+            <strong>Model Information</strong>
           </div>
           <div class="card-body">
-            <p>Model: {mcpResponse.modelUsed}</p>
+            <p>Model Used: {mcpResponse.modelUsed}</p>
           </div>
         </div>
       </div>

@@ -1,8 +1,6 @@
 <script>
-  import { onMount, createEventDispatcher } from "svelte";
+  import { onMount } from "svelte";
   import { createProject, updateProject } from "../services/api.js";
-
-  const dispatch = createEventDispatcher();
 
   let project = {
     name: "",
@@ -31,26 +29,23 @@
       formSuccess = null;
 
       if (!project.name) {
-        formError = "프로젝트 이름은 필수입니다";
+        formError = "Project name is required";
         return;
       }
 
       if (isEditing) {
         await updateProject(project.id, project);
-        formSuccess = "프로젝트가 성공적으로 업데이트되었습니다!";
+        formSuccess = "Project updated successfully!";
       } else {
         await createProject(project);
-        formSuccess = "프로젝트가 성공적으로 생성되었습니다!";
+        formSuccess = "Project created successfully!";
         resetForm();
       }
 
-      // 프로젝트 목록을 새로고침하기 위한 이벤트 발송
+      // Dispatch an event to refresh the project list
       document.dispatchEvent(new CustomEvent("project-saved"));
 
-      // Dispatch event for the parent component
-      dispatch("projectAdded", { success: true });
-
-      // 3초 후 성공 메시지 제거
+      // Clear success message after 3 seconds
       setTimeout(() => {
         formSuccess = null;
       }, 3000);
@@ -63,7 +58,7 @@
     resetForm();
   }
 
-  // ProjectList 컴포넌트에서 편집 이벤트 수신
+  // Listen for edit events from ProjectList component
   onMount(() => {
     const editHandler = (event) => {
       project = { ...event.detail };
@@ -80,7 +75,7 @@
 
 <div class="card">
   <div class="card-header">
-    <h2 class="mb-0">{isEditing ? "수정" : "추가"} 프로젝트</h2>
+    <h2 class="mb-0">{isEditing ? "Edit" : "Add"} Project</h2>
   </div>
   <div class="card-body">
     {#if formError}
@@ -97,7 +92,7 @@
 
     <form on:submit|preventDefault={handleSubmit}>
       <div class="mb-3">
-        <label for="name" class="form-label">프로젝트 이름</label>
+        <label for="name" class="form-label">Project Name</label>
         <input
           type="text"
           class="form-control"
@@ -108,7 +103,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="description" class="form-label">설명</label>
+        <label for="description" class="form-label">Description</label>
         <textarea
           class="form-control"
           id="description"
@@ -118,7 +113,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="status" class="form-label">상태</label>
+        <label for="status" class="form-label">Status</label>
         <select class="form-select" id="status" bind:value={project.status}>
           {#each statusOptions as status}
             <option value={status}>{status}</option>
@@ -128,7 +123,7 @@
 
       <div class="d-flex gap-2">
         <button type="submit" class="btn btn-primary">
-          프로젝트 {isEditing ? "업데이트" : "생성"}
+          {isEditing ? "Update" : "Create"} Project
         </button>
 
         {#if isEditing}
@@ -137,7 +132,7 @@
             class="btn btn-secondary"
             on:click={handleCancel}
           >
-            취소
+            Cancel
           </button>
         {/if}
       </div>
